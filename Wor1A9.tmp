@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxmsuykxbdqr8"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_12wyf"]
+[ext_resource type="Texture2D" uid="uid://c27lil6r1yxmb" path="res://Assets/environment/blackSprite.png" id="1_6813q"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_12wyf")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("1_6813q")
+region_enabled = true
+region_rect = Rect2(0, 0, 4000, 4000)

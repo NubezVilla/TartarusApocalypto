@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://dfqv84ooow00u"]
+
+[ext_resource type="Script" uid="uid://dfvei6tudy5xn" path="res://Assets/ZombieDog/zombie_dog.gd" id="1_0eg0u"]
+[ext_resource type="Script" uid="uid://l72j71xv7qli" path="res://Enemy_Nodes/Enemies.gd" id="2_i3t42"]
+[ext_resource type="Texture2D" uid="uid://bs2li438f22u3" path="res://Assets/ZombiePerson/enemy-death.png" id="2_mshs3"]
+[ext_resource type="Texture2D" uid="uid://bx0d4w36n7pg4" path="res://Assets/ZombieDog/Zombie-dog-FINAL-1-NoBACKGROUND-Sheet.png" id="2_v7pmd"]
+
+[sub_resource type="Resource" id="Resource_u2t4i"]
+script = ExtResource("2_i3t42")
+HEALTH = 1
+DAMAGE = 1
+EXP = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5iw0"]
+atlas = ExtResource("2_mshs3")
+region = Rect2(0, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6880e"]
+atlas = ExtResource("2_mshs3")
+region = Rect2(40, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obc5v"]
+atlas = ExtResource("2_mshs3")
+region = Rect2(80, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6wpt"]
+atlas = ExtResource("2_mshs3")
+region = Rect2(120, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8br50"]
+atlas = ExtResource("2_mshs3")
+region = Rect2(160, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxa0v"]
+atlas = ExtResource("2_mshs3")
+region = Rect2(200, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23kmh"]
+atlas = ExtResource("2_v7pmd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msvcc"]
+atlas = ExtResource("2_v7pmd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccdav"]
+atlas = ExtResource("2_v7pmd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xh31"]
+atlas = ExtResource("2_v7pmd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0firl"]
+atlas = ExtResource("2_v7pmd")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_moc1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5iw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6880e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obc5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6wpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8br50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxa0v")
+}],
+"loop": 0,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_23kmh")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_msvcc")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ccdav")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_6xh31")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_0firl")
+}],
+"loop": 1,
+"name": &"Running",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vm556"]
+size = Vector2(31, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ys2s"]
+radius = 668.139
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ufab"]
+size = Vector2(53, 30)
+
+[node name="ZombieDog" type="CharacterBody2D" unique_id=490912789 groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_0eg0u")
+stats = SubResource("Resource_u2t4i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=226129440]
+position = Vector2(0, 5)
+scale = Vector2(1.92969, 1.97656)
+sprite_frames = SubResource("SpriteFrames_moc1x")
+animation = &"Running"
+autoplay = "Running"
+
+[node name="hitBox" type="CollisionShape2D" parent="." unique_id=1155884824]
+visible = false
+light_mask = 4
+position = Vector2(1.5, 1)
+shape = SubResource("RectangleShape2D_vm556")
+
+[node name="PlayerDetection" type="Area2D" parent="." unique_id=901470764]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" unique_id=125128603]
+shape = SubResource("CircleShape2D_2ys2s")
+
+[node name="EnemyDeath" type="Area2D" parent="." unique_id=367102768]
+visible = false
+
+[node name="hurtBox" type="CollisionShape2D" parent="EnemyDeath" unique_id=1109548793]
+position = Vector2(-1.5, -5)
+shape = SubResource("RectangleShape2D_1ufab")
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_entered" from="EnemyDeath" to="." method="_on_enemy_death_body_entered"]

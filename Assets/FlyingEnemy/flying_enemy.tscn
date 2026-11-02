@@ -1,0 +1,291 @@
+[gd_scene format=3 uid="uid://dmmqwid6ons3k"]
+
+[ext_resource type="Script" uid="uid://c147uetvp215h" path="res://Assets/FlyingEnemy/flying_enemy.gd" id="1_ngfqb"]
+[ext_resource type="Script" uid="uid://l72j71xv7qli" path="res://Enemy_Nodes/Enemies.gd" id="2_01ahf"]
+[ext_resource type="Texture2D" uid="uid://c11t58oibdiig" path="res://Assets/FlyingEnemy/flying_enemy_MOVING-Sheet.png" id="2_1484a"]
+[ext_resource type="Texture2D" uid="uid://bs2li438f22u3" path="res://Assets/ZombiePerson/enemy-death.png" id="2_bh154"]
+[ext_resource type="Texture2D" uid="uid://xbc0ud0auo8o" path="res://Assets/FlyingEnemy/flying_enemy_ATTACK-Sheet.png" id="2_yx616"]
+
+[sub_resource type="Resource" id="Resource_cdlgq"]
+script = ExtResource("2_01ahf")
+HEALTH = 1
+DAMAGE = 3
+EXP = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jcxa"]
+atlas = ExtResource("2_yx616")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7ufu"]
+atlas = ExtResource("2_yx616")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np63o"]
+atlas = ExtResource("2_yx616")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x410"]
+atlas = ExtResource("2_bh154")
+region = Rect2(0, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44po1"]
+atlas = ExtResource("2_bh154")
+region = Rect2(40, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt2a2"]
+atlas = ExtResource("2_bh154")
+region = Rect2(80, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4idpu"]
+atlas = ExtResource("2_bh154")
+region = Rect2(120, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djnlp"]
+atlas = ExtResource("2_bh154")
+region = Rect2(160, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oewuo"]
+atlas = ExtResource("2_bh154")
+region = Rect2(200, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_havtf"]
+atlas = ExtResource("2_1484a")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrvrq"]
+atlas = ExtResource("2_1484a")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gvdmw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jcxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7ufu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np63o")
+}],
+"loop": 0,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2x410")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44po1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt2a2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4idpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djnlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oewuo")
+}],
+"loop": 0,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_havtf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrvrq")
+}],
+"loop": 0,
+"name": &"Flying",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_hmmci"]
+resource_name = "Attack"
+length = 0.32
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_eta5i"]
+resource_name = "Death"
+length = 0.63
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_guyw8"]
+resource_name = "Flying"
+length = 0.55
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Flying"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_gh7hh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Flying"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kebqg"]
+_data = {
+&"Attack": SubResource("Animation_hmmci"),
+&"Death": SubResource("Animation_eta5i"),
+&"Flying": SubResource("Animation_guyw8"),
+&"RESET": SubResource("Animation_gh7hh")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skcla"]
+size = Vector2(14, 13)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6glmb"]
+radius = 441.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b11ic"]
+radius = 12.0
+height = 32.0
+
+[node name="FlyingEnemy" type="CharacterBody2D" unique_id=1722696587 groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_ngfqb")
+stats = SubResource("Resource_cdlgq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1235155572]
+scale = Vector2(1.41406, 1.41602)
+sprite_frames = SubResource("SpriteFrames_gvdmw")
+animation = &"Flying"
+autoplay = "Flying"
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2080542473]
+libraries/ = SubResource("AnimationLibrary_kebqg")
+autoplay = &"Flying"
+
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=973240746]
+visible = false
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_skcla")
+
+[node name="PlayerDetection" type="Area2D" parent="." unique_id=1045576279]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" unique_id=305255040]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_6glmb")
+
+[node name="EnemyDeath" type="Area2D" parent="." unique_id=1583754930]
+visible = false
+
+[node name="HurtBox" type="CollisionShape2D" parent="EnemyDeath" unique_id=575352869]
+visible = false
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_b11ic")
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=859542954]
+wait_time = 3.0
+autostart = true
+
+[node name="Navigation" type="Node2D" parent="." unique_id=1517782309]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation" unique_id=1143463563]
+
+[node name="RecalcTime" type="Timer" parent="." unique_id=357201611]
+autostart = true
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_entered" from="EnemyDeath" to="." method="_on_enemy_death_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="RecalcTime" to="." method="_on_recalc_time_timeout"]

@@ -1,0 +1,116 @@
+[gd_scene load_steps=15 format=3 uid="uid://ojitv2ajq3jk"]
+
+[ext_resource type="Texture2D" uid="uid://b4cth4t7755qc" path="res://Assets/LampPost/LampPost-NO_Background-0001-Sheet.png" id="1_55830"]
+[ext_resource type="Script" path="res://Assets/LampPost/lamppost.gd" id="1_der4q"]
+[ext_resource type="Texture2D" uid="uid://bs2li438f22u3" path="res://Assets/ZombiePerson/enemy-death.png" id="2_cnbpn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scan8"]
+size = Vector2(14, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1x4j"]
+atlas = ExtResource("2_cnbpn")
+region = Rect2(0, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctdwl"]
+atlas = ExtResource("2_cnbpn")
+region = Rect2(40, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eo3m"]
+atlas = ExtResource("2_cnbpn")
+region = Rect2(80, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptjfo"]
+atlas = ExtResource("2_cnbpn")
+region = Rect2(120, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvoq7"]
+atlas = ExtResource("2_cnbpn")
+region = Rect2(160, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctgp8"]
+atlas = ExtResource("2_cnbpn")
+region = Rect2(200, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7idhe"]
+atlas = ExtResource("1_55830")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65hdg"]
+atlas = ExtResource("1_55830")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0de7c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1x4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctdwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2eo3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptjfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvoq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctgp8")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7idhe")
+}],
+"loop": true,
+"name": &"Lamppost_destroyed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65hdg")
+}],
+"loop": false,
+"name": &"Lamppost_whole",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3jarw"]
+radius = 16.0
+height = 130.0
+
+[node name="Lamppost" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_der4q")
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(3, 50.5)
+shape = SubResource("RectangleShape2D_scan8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 1)
+scale = Vector2(1.90625, 3.84375)
+sprite_frames = SubResource("SpriteFrames_0de7c")
+animation = &"Lamppost_whole"
+autoplay = "Lamppost_whole"
+
+[node name="BulletDetection" type="Area2D" parent="."]
+
+[node name="HurtBox" type="CollisionShape2D" parent="BulletDetection"]
+position = Vector2(8, 3)
+shape = SubResource("CapsuleShape2D_3jarw")
+debug_color = Color(0.85098, 0.290196, 0.607843, 0.419608)
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="Navigator" type="NavigationAgent2D" parent="Navigation"]
+
+[connection signal="body_entered" from="BulletDetection" to="." method="_on_bullet_detection_body_entered"]

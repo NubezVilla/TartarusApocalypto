@@ -1,0 +1,19 @@
+TODO:
+- crosshair & animation adjustments
+
+1. FUNCTIONAL MINIMUM
+- Obstacles
+- Damage collision detection
+- Looping world
+- 3 enemies
+- scoreboard file output
+
+2. LOW TARGET
+- Event timer (Waves)
+- Weapons (Weapons, ammo)
+- Sort scoreboard by all fields (cpp)
+
+3. DESIRABLE TARGET
+- Larger board
+- More enemies
+- EXP system

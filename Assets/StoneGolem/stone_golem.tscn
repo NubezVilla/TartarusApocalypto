@@ -1,0 +1,270 @@
+[gd_scene format=3 uid="uid://b2mi1um5yqqct"]
+
+[ext_resource type="Script" uid="uid://c0b5g4cs0qxfy" path="res://Assets/StoneGolem/stone_golem.gd" id="1_2lt8i"]
+[ext_resource type="Texture2D" uid="uid://ku6rtcyfchne" path="res://Assets/StoneGolem/StoneGolem_ATTACKING-0001-Sheet.png" id="1_j4prr"]
+[ext_resource type="Texture2D" uid="uid://ci3ucfinxb2vk" path="res://Assets/StoneGolem/StoneGolem_WALKING-0001-Sheet.png" id="2_5k2gv"]
+[ext_resource type="Script" uid="uid://l72j71xv7qli" path="res://Enemy_Nodes/Enemies.gd" id="2_s7r2a"]
+[ext_resource type="Texture2D" uid="uid://bs2li438f22u3" path="res://Assets/ZombiePerson/enemy-death.png" id="4_hxd40"]
+
+[sub_resource type="Resource" id="Resource_d7aw4"]
+script = ExtResource("2_s7r2a")
+HEALTH = 20
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrhjm"]
+atlas = ExtResource("1_j4prr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vxar"]
+atlas = ExtResource("1_j4prr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpevq"]
+atlas = ExtResource("1_j4prr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gutrs"]
+atlas = ExtResource("1_j4prr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpx8v"]
+atlas = ExtResource("4_hxd40")
+region = Rect2(0, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd54v"]
+atlas = ExtResource("4_hxd40")
+region = Rect2(40, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vv12k"]
+atlas = ExtResource("4_hxd40")
+region = Rect2(80, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqvsq"]
+atlas = ExtResource("4_hxd40")
+region = Rect2(120, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw51t"]
+atlas = ExtResource("4_hxd40")
+region = Rect2(160, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ywyd"]
+atlas = ExtResource("4_hxd40")
+region = Rect2(200, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te3n2"]
+atlas = ExtResource("2_5k2gv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmumu"]
+atlas = ExtResource("2_5k2gv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_etyu1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrhjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vxar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpevq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gutrs")
+}],
+"loop": 1,
+"name": &"Attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpx8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd54v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vv12k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqvsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw51t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ywyd")
+}],
+"loop": 1,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te3n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmumu")
+}],
+"loop": 1,
+"name": &"Walking",
+"speed": 2.0
+}]
+
+[sub_resource type="Animation" id="Animation_wh1ns"]
+resource_name = "Attacking"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Attacking"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 1, 2, 2, 2, 3, 3, 0]
+}
+
+[sub_resource type="Animation" id="Animation_xafqf"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_fvrlt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_5t1fr"]
+resource_name = "Walking"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Walking"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.4, 0.6, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 1, 0, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_85ugq"]
+_data = {
+&"Attacking": SubResource("Animation_wh1ns"),
+&"Death": SubResource("Animation_xafqf"),
+&"RESET": SubResource("Animation_fvrlt"),
+&"Walking": SubResource("Animation_5t1fr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5u7vj"]
+size = Vector2(73, 185)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0glv"]
+size = Vector2(109, 205)
+
+[node name="StoneGolem" type="CharacterBody2D" unique_id=1111129162 groups=["Mini-Boss"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_2lt8i")
+stats = SubResource("Resource_d7aw4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1143652991]
+position = Vector2(1, 1)
+scale = Vector2(9.21875, 8.5625)
+sprite_frames = SubResource("SpriteFrames_etyu1")
+animation = &"Death"
+autoplay = "Walking"
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=683678906]
+libraries/ = SubResource("AnimationLibrary_85ugq")
+autoplay = &"Walking"
+
+[node name="Navigation" type="Node2D" parent="." unique_id=1849986287]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation" unique_id=208890174]
+
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=251423995]
+position = Vector2(4.5, 20.5)
+shape = SubResource("RectangleShape2D_5u7vj")
+
+[node name="Bullet_Detection" type="Area2D" parent="." unique_id=878422308]
+position = Vector2(0, 1)
+collision_layer = 2
+collision_mask = 4
+
+[node name="HurtBox" type="CollisionShape2D" parent="Bullet_Detection" unique_id=1815075955]
+position = Vector2(3.5, 22.5)
+shape = SubResource("RectangleShape2D_y0glv")
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=591052629]
+wait_time = 3.0
+autostart = true
+
+[node name="recalcPath" type="Timer" parent="." unique_id=125774760]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="recalcPath" to="." method="_on_recalc_path_timeout"]

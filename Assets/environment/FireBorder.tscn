@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2fxskmoa7cgt"]
+
+[ext_resource type="Script" path="res://Assets/environment/FireBorder.gd" id="1_3f60t"]
+[ext_resource type="Texture2D" uid="uid://byhu4tfs3rl20" path="res://Assets/environment/Tiles - Intangable/whiteFire/loops/burning_loop_2.png" id="1_4twj3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vasb"]
+atlas = ExtResource("1_4twj3")
+region = Rect2(0, 0, 20, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2nh3"]
+atlas = ExtResource("1_4twj3")
+region = Rect2(20, 0, 20, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2hkp"]
+atlas = ExtResource("1_4twj3")
+region = Rect2(40, 0, 20, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q4jp"]
+atlas = ExtResource("1_4twj3")
+region = Rect2(60, 0, 20, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrs37"]
+atlas = ExtResource("1_4twj3")
+region = Rect2(80, 0, 20, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43m0w"]
+atlas = ExtResource("1_4twj3")
+region = Rect2(100, 0, 20, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig87e"]
+atlas = ExtResource("1_4twj3")
+region = Rect2(120, 0, 20, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owtl0"]
+atlas = ExtResource("1_4twj3")
+region = Rect2(140, 0, 20, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e0xwr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vasb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2nh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2hkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q4jp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrs37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43m0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig87e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owtl0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="FireBorder" type="Node2D"]
+script = ExtResource("1_3f60t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e0xwr")
+frame_progress = 0.34185

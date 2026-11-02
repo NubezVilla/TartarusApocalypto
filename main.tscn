@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnmv2ujq3ho2i"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ww5sa"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ww5sa")
+
+[node name="World" type="Button" parent="."]
+offset_left = 161.0
+offset_top = 3.0
+offset_right = 436.0
+offset_bottom = 104.0
+text = "World"
+
+[node name="Score" type="Button" parent="."]
+offset_left = 162.0
+offset_top = 164.0
+offset_right = 437.0
+offset_bottom = 265.0
+text = "Scoreboard"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 164.0
+offset_top = 310.0
+offset_right = 444.0
+offset_bottom = 439.0
+text = "Quit"
+
+[connection signal="pressed" from="World" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="World" to="." method="_on_world_pressed"]
+[connection signal="pressed" from="Score" to="." method="_on_score_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,242 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxmsuykxbdqr8"]
+
+[ext_resource type="Texture2D" uid="uid://c27lil6r1yxmb" path="res://Assets/environment/blackSprite.png" id="1_6813q"]
+[ext_resource type="Script" path="res://World.gd" id="1_qtlo0"]
+[ext_resource type="PackedScene" uid="uid://nmr34tsqx2ty" path="res://Player/Player.tscn" id="2_1baa5"]
+[ext_resource type="Texture2D" uid="uid://g1hnciuhtkox" path="res://Assets/environment/tilemap_wallandfloor.png" id="3_ggt4h"]
+[ext_resource type="PackedScene" uid="uid://ct7k6aioudfru" path="res://Enemy_Nodes/enemy_spawns.tscn" id="5_emecu"]
+[ext_resource type="PackedScene" uid="uid://ojitv2ajq3jk" path="res://Assets/LampPost/lamppost.tscn" id="6_3rchi"]
+[ext_resource type="PackedScene" uid="uid://bgxkhhvllp7hf" path="res://Assets/environment/WorldBorder Do Not Open.tscn" id="6_ar54s"]
+[ext_resource type="PackedScene" uid="uid://bwm7nh2c6ici7" path="res://Assets/Mailbox/mail_box.tscn" id="6_lx4vg"]
+[ext_resource type="PackedScene" uid="uid://d2pq8rlkijtqf" path="res://Assets/Gems/gem.tscn" id="7_uka4b"]
+
+[sub_resource type="Environment" id="Environment_pk78k"]
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_vrli6"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_c57ya"]
+vertices = PackedVector2Array(1817, -1893, 1829, 1847, -1809, 1834, -1822, -1855)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1822, -1855, -1809, 1834, 1829, 1847, 1817, -1893)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_qtlo0")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -10
+texture_filter = 1
+texture_repeat = 2
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_6813q")
+region_enabled = true
+region_rect = Rect2(0, 0, 4000, 4000)
+
+[node name="Player" parent="." instance=ExtResource("2_1baa5")]
+position = Vector2(-1, -1)
+
+[node name="PLACEHOLDERrelativesprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(99, -104)
+texture = ExtResource("3_ggt4h")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pk78k")
+camera_attributes = SubResource("CameraAttributesPhysical_vrli6")
+
+[node name="WorldBorder Do Not Open" parent="." instance=ExtResource("6_ar54s")]
+
+[node name="Loot" type="Node2D" parent="." groups=["loot"]]
+position = Vector2(-49, 42)
+
+[node name="EXPGem" parent="." instance=ExtResource("7_uka4b")]
+position = Vector2(-140, 106)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_c57ya")
+
+[node name="Enemy_Spawns" parent="." instance=ExtResource("5_emecu")]
+position = Vector2(30, -154)
+
+[node name="Street_Lights" type="Node" parent="."]
+
+[node name="Lamppost" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(-300, -238)
+
+[node name="Lamppost2" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(-317, 1)
+
+[node name="Lamppost3" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(-330, 183)
+
+[node name="Lamppost4" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(283, 197)
+
+[node name="Lamppost5" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(284, -26)
+
+[node name="Lamppost6" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(300, -245)
+
+[node name="Lamppost7" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(-3, 273)
+
+[node name="Lamppost8" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(-333, 364)
+
+[node name="Lamppost9" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(358, -450)
+
+[node name="Lamppost10" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(485, 451)
+
+[node name="Lamppost11" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(974, 445)
+
+[node name="Lamppost12" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(1409, 445)
+
+[node name="Lamppost13" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(710, -844)
+
+[node name="Lamppost14" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(1253, -1331)
+
+[node name="Lamppost15" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(134, -967)
+
+[node name="Lamppost16" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(-205, -1251)
+
+[node name="Lamppost17" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(-1269, -670)
+
+[node name="Lamppost18" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(-1252, -361)
+
+[node name="Lamppost19" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(1350, -509)
+
+[node name="Lamppost20" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(1316, -933)
+
+[node name="Lamppost21" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(774, -1564)
+
+[node name="Lamppost22" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(990, -204)
+
+[node name="Lamppost23" parent="Street_Lights" instance=ExtResource("6_3rchi")]
+position = Vector2(1452, -149)
+
+[node name="Street_Lights2" type="Node" parent="."]
+
+[node name="Lamppost" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-921, 80)
+
+[node name="Lamppost2" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-1315, 93)
+
+[node name="Lamppost3" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-1645, 86)
+
+[node name="Lamppost4" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-820, 537)
+
+[node name="Lamppost5" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-1318, 686)
+
+[node name="Lamppost6" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-108, 889)
+
+[node name="Lamppost7" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-832, 1343)
+
+[node name="Lamppost8" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-820, 894)
+
+[node name="Lamppost9" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-1354, 1279)
+
+[node name="Lamppost10" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-1311, 974)
+
+[node name="Lamppost11" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(1181, 1084)
+
+[node name="Lamppost12" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(600, 1114)
+
+[node name="Lamppost13" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(1015, 1449)
+
+[node name="Lamppost14" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-6, 1500)
+
+[node name="Lamppost15" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-828, -992)
+
+[node name="Lamppost16" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(248, -1047)
+
+[node name="Lamppost17" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-595, -814)
+
+[node name="Lamppost18" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-23, -1594)
+
+[node name="Lamppost19" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-1239, -1594)
+
+[node name="Lamppost20" parent="Street_Lights2" instance=ExtResource("6_3rchi")]
+position = Vector2(-1201, -1285)
+
+[node name="mailBoxes" type="Node" parent="."]
+
+[node name="mailBox" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(-169, 385)
+
+[node name="mailBox2" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(-93, -271)
+
+[node name="mailBox3" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(-611, 911)
+
+[node name="mailBox4" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(-1378, -1140)
+
+[node name="mailBox5" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(1044, 723)
+
+[node name="mailBox6" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(903, -878)
+
+[node name="mailBox7" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(371, -1584)
+
+[node name="mailBox8" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(-234, -945)
+
+[node name="mailBox9" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(445, 1423)
+
+[node name="mailBox10" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(-739, -474)
+
+[node name="mailBox11" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(1495, -1564)
+
+[node name="mailBox12" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(-192, 1113)
+
+[node name="mailBox13" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(1595, 1598)
+
+[node name="mailBox14" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(-1700, 1535)
+
+[node name="mailBox15" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(-632, -252)
+
+[node name="mailBox16" parent="mailBoxes" instance=ExtResource("6_lx4vg")]
+position = Vector2(293, 700)
