@@ -7,7 +7,6 @@ You can download and play the game directly—no engine installation or code com
 * **[Download for Windows (Latest Release)](https://github.com/NubezVilla/TartarusApocalypto/releases/tag/v1.0.0)**
 
 ## 🎮 Game Overview
-*(Add a brief, exciting description of your game's story, setting, and core loop here. For example: "You are the last survivor trapped in a shifting realm. Fight off swarms of Flying Zombies, Stone Golems, and feral hounds while destroying the environment to scavenge for food.")*
 You are the lone survivor of a devistating apocalypse with a simple mission, survive the hordes. Fight off swarms of zombies, Golems, and zombified dogs while destroying the environment to keep your health up. How long can you survive?
 
 ## ✨ Features
